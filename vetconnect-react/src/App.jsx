@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import FormMascota from "./components/FormMascota";
 import { useState } from "react";
 import MascotaCard from "./components/MascotaCard";
-export default function App() {
 
+export default function App() {
 
   const [mascotas, setMascotas] = useState([
     {
@@ -24,36 +24,41 @@ export default function App() {
   ]);
 
   function registrarMascota(nuevaMascota) {
-  <FormMascota
-  onRegistrar={registrarMascota}
-  />
-  const mascotaConId = {
-    id: Date.now(),
-    ...nuevaMascota
-  };
-  setMascotas([
-    ...mascotas,
-    mascotaConId
-  ]);
-}
+    const mascotaConId = {
+      id: Date.now(),
+      ...nuevaMascota
+    };
 
-return(
-  <>
-  <Header />
-  <main className="contenedor">
-    <h2>Mascotas</h2>
-    <section className="lista-mascotas">
-      {mascotas.map((mascota) => (
-        <MascotaCard
-        key={mascota.id}
-        nombre={mascota.nombre}
-        especie={mascota.especie}
-        edad={mascota.edad}
-        vacunada={mascota.vacunada}
+    setMascotas([
+      ...mascotas,
+      mascotaConId
+    ]);
+  }
+
+  return (
+    <>
+      <Header />
+
+      <main className="contenedor">
+        <h2>Mascotas</h2>
+
+        <FormMascota
+          onRegistrar={registrarMascota}
         />
-        ))}
-    </section>
-  </main>
-  </>
+
+        <section className="lista-mascotas">
+          {mascotas.map((mascota) => (
+            <MascotaCard
+              key={mascota.id}
+              nombre={mascota.nombre}
+              especie={mascota.especie}
+              edad={mascota.edad}
+              vacunada={mascota.vacunada}
+            />
+          ))}
+        </section>
+
+      </main>
+    </>
   );
 }
