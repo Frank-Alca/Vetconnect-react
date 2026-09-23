@@ -6,20 +6,6 @@ import MascotaCard from "./components/MascotaCard";
 export default function App() {
 
 
-  function registrarMascota(nuevaMascota) {
-  <FormMascota
-  onRegistrar={registrarMascota}
-  />
-  const mascotaConId = {
-    id: Date.now(),
-    ...nuevaMascota
-  };
-  setMascotas([
-    ...mascotas,
-    mascotaConId
-  ]);
-}
-
   const [mascotas, setMascotas] = useState([
     {
       id: 1,
@@ -37,7 +23,19 @@ export default function App() {
     }
   ]);
 
-  
+  function registrarMascota(nuevaMascota) {
+  <FormMascota
+  onRegistrar={registrarMascota}
+  />
+  const mascotaConId = {
+    id: Date.now(),
+    ...nuevaMascota
+  };
+  setMascotas([
+    ...mascotas,
+    mascotaConId
+  ]);
+}
 
 return(
   <>
